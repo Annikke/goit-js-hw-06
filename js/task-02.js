@@ -8,14 +8,13 @@ const ingredients = [
 ];
 
 const ingredientsList = document.getElementById(`ingredients`);
+const ingredientsElem = [];
 
-const ingredientsElem = ingredients.map(ingredient => `<li class='item'> ${ingredient}</li>`).join(' ');
-ingredientsList.insertAdjacentHTML(`beforeend`, ingredientsElem);
+for (const ingredient of ingredients) {
+  const element = document.createElement(`li`);
+  element.textContent = ingredient;
+  element.classList.add('item');
+  ingredientsElem.push(element);
+}
 
-// for (const ingredient of ingredients) {
-//   const ingredientsElem = document.createElement(`li`);
-//   ingredientsElem.textContent = ingredient;
-//   ingredientsList.appendChild(ingredientsElem);
-// }
-
-
+ingredientsList.append(...ingredientsElem);
